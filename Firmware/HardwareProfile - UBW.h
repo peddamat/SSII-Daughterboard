@@ -132,14 +132,14 @@
     #define sw2                 PORTBbits.RB2
     
     /** RS 232 lines ****************************************************/
-    #define UART_TRISTx   TRISBbits.TRISB7
-    #define UART_TRISRx   TRISBbits.TRISB5
-    #define UART_Tx       PORTBbits.RB7
-    #define UART_Rx       PORTBbits.RB5
-    #define UART_TRISRTS  TRISBbits.TRISB4
-    #define UART_RTS      PORTBbits.RB4
-    #define UART_TRISDTR  TRISBbits.TRISB6
-    #define UART_DTR      PORTBbits.RB6
+    #define UART_TRISTx   TRISCbits.TRISC6
+    #define UART_TRISRx   TRISCbits.TRISC7
+    #define UART_Tx       PORTCbits.RC6
+    #define UART_Rx       PORTCbits.RC7
+//    #define UART_TRISRTS  TRISBbits.TRISB4
+//    #define UART_RTS      PORTBbits.RB4
+//    #define UART_TRISDTR  TRISBbits.TRISB6
+//    #define UART_DTR      PORTBbits.RB6
     #define UART_ENABLE RCSTAbits.SPEN
 
     /** USB external transceiver interface (optional) ******************/

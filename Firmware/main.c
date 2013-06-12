@@ -69,6 +69,7 @@
 #pragma udata
 char USB_In_Buffer[64];
 char USB_Out_Buffer[64];
+unsigned char  NextUSBOut;
 
 BOOL stringPrinted;
 volatile BOOL buttonPressed;
@@ -82,6 +83,7 @@ void YourHighPriorityISRCode();
 void YourLowPriorityISRCode();
 void BlinkUSBStatus(void);
 void UserInit(void);
+void InitializeUSART(void);
 
 /** VECTOR REMAPPING ***********************************************/
 #if defined(__18CXX)
@@ -369,7 +371,117 @@ void UserInit(void)
 
     //Initialize the pushbuttons
     mInitAllSwitches();
+
+    // Initialize UART
+    InitializeUSART();
+
+    // Disable all unused peripherals
+    DisablePeripherals();
+
+    // Sleep until UART interrupt
+    
 }//end UserInit
+
+/******************************************************************************
+ * Function:        void InitializeUSART(void)
+ *
+ * PreCondition:    None
+ *
+ * Input:           None
+ *
+ * Output:          None
+ *
+ * Side Effects:    None
+ *
+ * Overview:        This routine initializes the UART to 19200
+ *
+ * Note:            
+ *
+ *****************************************************************************/
+void InitializeUSART(void)
+{
+    #if defined(__18CXX) || defined(__XC8)
+	    unsigned char c;
+
+        UART_TRISRx=1;				// RX
+        UART_TRISTx=0;				// TX
+        TXSTA = 0x24;       	    // TX enable BRGH=1
+        RCSTA = 0x90;       	    // Single Character RX
+        SPBRG = 0x26;
+        SPBRGH = 0x00;      	    // 0x0271 for 48MHz -> 19200 baud
+        BAUDCON = 0x00;     	    // BRG16 = 1
+        c = RCREG;				    // read 
+    #endif
+
+}//end InitializeUSART
+
+#if defined(__18CXX) || defined(__XC8)
+    #define mDataRdyUSART() PIR1bits.RCIF
+    #define mTxRdyUSART()   TXSTAbits.TRMT
+#endif
+
+/******************************************************************************
+ * Function:        void putcUSART(char c)
+ *
+ * PreCondition:    None
+ *
+ * Input:           char c - character to print to the UART
+ *
+ * Output:          None
+ *
+ * Side Effects:    None
+ *
+ * Overview:        Print the input character to the UART
+ *
+ * Note:            
+ *
+ *****************************************************************************/
+void putcUSART(char c)  
+{
+    #if defined(__18CXX) || defined(__XC8)
+	    TXREG = c;
+    #endif
+}
+
+/******************************************************************************
+ * Function:        void putcUSART(char c)
+ *
+ * PreCondition:    None
+ *
+ * Input:           None
+ *
+ * Output:          unsigned char c - character to received on the UART
+ *
+ * Side Effects:    None
+ *
+ * Overview:        Print the input character to the UART
+ *
+ * Note:            
+ *
+ *****************************************************************************/
+unsigned char getcUSART ()
+{
+	char  c;
+
+    #if defined(__18CXX) || defined(__XC8)
+
+	if (RCSTAbits.OERR)  // in case of overrun error
+	{                    // we should never see an overrun error, but if we do, 
+		RCSTAbits.CREN = 0;  // reset the port
+		c = RCREG;
+		RCSTAbits.CREN = 1;  // and keep going.
+	}
+	else
+    {
+		c = RCREG;
+    }
+// not necessary.  EUSART auto clears the flag when RCREG is cleared
+//	PIR1bits.RCIF = 0;    // clear Flag
+
+    #endif
+
+	return c;
+}
 
 /********************************************************************
  * Function:        void ProcessIO(void)
@@ -397,46 +509,64 @@ void ProcessIO(void)
     // User Application USB tasks
     if((USBDeviceState < CONFIGURED_STATE)||(USBSuspendControl==1)) return;
 
-    if(buttonPressed)
-    {
-        if(stringPrinted == FALSE)
-        {
-            if(mUSBUSARTIsTxTrfReady())
-            {
-                putrsUSBUSART("Button Pressed -- \r\n");
-                stringPrinted = TRUE;
-            }
-        }
-    }
-    else
-    {
-        stringPrinted = FALSE;
-    }
+//    if(buttonPressed)
+//    {
+//        if(stringPrinted == FALSE)
+//        {
+//            if(mUSBUSARTIsTxTrfReady())
+//            {
+//                putrsUSBUSART("Button Pressed -- \r\n");
+//                stringPrinted = TRUE;
+//            }
+//        }
+//    }
+//    else
+//    {
+//        stringPrinted = FALSE;
+//    }
+//
+//    if(mUSBUSARTIsTxTrfReady())
+//    {
+//		numBytesRead = getsUSBUSART(USB_Out_Buffer,64);
+//		if(numBytesRead != 0)
+//		{
+//			BYTE i;
+//	        
+//			for(i=0;i<numBytesRead;i++)
+//			{
+//				switch(USB_Out_Buffer[i])
+//				{
+//					case 0x0A:
+//					case 0x0D:
+//						USB_In_Buffer[i] = USB_Out_Buffer[i];
+//						break;
+//					default:
+//						USB_In_Buffer[i] = USB_Out_Buffer[i] + 1;
+//						break;
+//				}
+//
+//			}
+//
+//			putUSBUSART(USB_In_Buffer,numBytesRead);
+//		}
+//	}
 
-    if(mUSBUSARTIsTxTrfReady())
-    {
-		numBytesRead = getsUSBUSART(USB_Out_Buffer,64);
-		if(numBytesRead != 0)
-		{
-			BYTE i;
-	        
-			for(i=0;i<numBytesRead;i++)
-			{
-				switch(USB_Out_Buffer[i])
-				{
-					case 0x0A:
-					case 0x0D:
-						USB_In_Buffer[i] = USB_Out_Buffer[i];
-						break;
-					default:
-						USB_In_Buffer[i] = USB_Out_Buffer[i] + 1;
-						break;
-				}
+    //Check if we received a character over the physical UART, and we need
+    //to buffer it up for eventual transmission to the USB host.
+	if(mDataRdyUSART() && (NextUSBOut < (CDC_DATA_OUT_EP_SIZE - 1)))
+	{
+		USB_Out_Buffer[NextUSBOut] = getcUSART();
+		++NextUSBOut;
+		USB_Out_Buffer[NextUSBOut] = 0;
+	}
 
-			}
-
-			putUSBUSART(USB_In_Buffer,numBytesRead);
-		}
+    //Check if any bytes are waiting in the queue to send to the USB host.
+    //If any bytes are waiting, and the endpoint is available, prepare to
+    //send the USB packet to the host.
+	if((USBUSARTIsTxTrfReady()) && (NextUSBOut > 0))
+	{
+		putUSBUSART(&USB_Out_Buffer[0], NextUSBOut);
+		NextUSBOut = 0;
 	}
 
     CDCTxService();
