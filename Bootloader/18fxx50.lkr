@@ -10,7 +10,7 @@ LIBPATH .
 
 FILES c018i.o
 FILES clib.lib
-FILES p18f2553.lib
+FILES p18f2550.lib
 
 CODEPAGE   NAME=page       START=0x0            END=0x7FF
 CODEPAGE   NAME=idlocs     START=0x200000       END=0x200007       PROTECTED

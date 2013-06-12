@@ -74,10 +74,10 @@
 /** L E D ***********************************************************/
 /* On UBW v0.3, LED1 = RC0, LED2 = RC1, SW1 = RC2 					*/
 
-#define mInitAllLEDs()      LATC = 0x00; TRISC = 0xFC;
+#define mInitAllLEDs()      LATB = 0x00; TRISB = 0xFC;
 
-#define mLED_1              LATCbits.LATC0
-#define mLED_2              LATCbits.LATC1
+#define mLED_1              LATBbits.LATB0
+#define mLED_2              LATBbits.LATB1
 
 #define mLED_1_On()         mLED_1 = 1;
 #define mLED_2_On()         mLED_2 = 1;
@@ -89,9 +89,9 @@
 #define mLED_2_Toggle()     mLED_2 = !mLED_2;
 
 /** S W I T C H *****************************************************/
-#define mInitAllSwitches()  TRISCbits.TRISC2=1;
-#define mInitSwitch2()      TRISCbits.TRISC2=1;
-#define sw2                 PORTCbits.RC2
+#define mInitAllSwitches()  TRISBbits.TRISB2=1;
+#define mInitSwitch2()      TRISBbits.TRISB2=1;
+#define sw2                 PORTBbits.RB2
 
 #define mLED_Both_Off()         {mLED_1_Off();mLED_2_Off();}
 #define mLED_Both_On()          {mLED_1_On();mLED_2_On();}
