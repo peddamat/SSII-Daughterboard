@@ -109,10 +109,10 @@
 
 
     /** LED ************************************************************/
-    #define mInitAllLEDs()      LATC &= 0xFC; TRISC &= 0xFC;
+    #define mInitAllLEDs()      LATB &= 0xFC; TRISB &= 0xFC;
     
-    #define mLED_1              LATCbits.LATC0
-    #define mLED_2              LATCbits.LATC1
+    #define mLED_1              LATBbits.LATB0
+    #define mLED_2              LATBbits.LATB1
     
     #define mGetLED_1()         mLED_1
     #define mGetLED_2()         mLED_2
@@ -127,9 +127,9 @@
     #define mLED_2_Toggle()     mLED_2 = !mLED_2;
     
     /** SWITCH *********************************************************/
-    #define mInitAllSwitches()  TRISCbits.TRISC2 = 1;
-    #define mInitSwitch2()      TRISCbits.TRISC2 = 1;
-    #define sw2                 PORTCbits.RC2
+    #define mInitAllSwitches()  TRISBbits.TRISB2 = 1;
+    #define mInitSwitch2()      TRISBbits.TRISB2 = 1;
+    #define sw2                 PORTBbits.RB2
     
     /** RS 232 lines ****************************************************/
     #define UART_TRISTx   TRISBbits.TRISB7
