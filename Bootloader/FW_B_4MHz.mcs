@@ -1,0 +1,136 @@
+[Header]
+MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
+Version=1.0
+[File000]
+Location=D:\Projects\UBW\FW\B\output_4MHz\main.o
+Folder=Intermediary
+DeviceName=PIC18F2553
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mcc18.exe
+PPAD=$(BINDIR)|output_4MHz||$(TMPDIR)|output_4MHz||$(AINDIR)||$(INCDIR)||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.37.01\lib;||$(LKRDIR)||
+SOLK=<src>|main.c|usbmmap.c|usbdrv.c|usb9.c|usbctrltrf.c|boot.c|usbdsc.c||<obj>||<lib>||<lkr>|18fxx50.lkr||
+SuiteArgsString=
+ToolArgsString=-scs -D__4MHz_UBW_BOOTLOADER
+TraceCmdString=
+DebugOptions=
+[File001]
+Location=D:\Projects\UBW\FW\B\output_4MHz\usbmmap.o
+Folder=Intermediary
+DeviceName=PIC18F2553
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mcc18.exe
+PPAD=$(BINDIR)|output_4MHz||$(TMPDIR)|output_4MHz||$(AINDIR)||$(INCDIR)||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.37.01\lib;||$(LKRDIR)||
+SOLK=<src>|main.c|usbmmap.c|usbdrv.c|usb9.c|usbctrltrf.c|boot.c|usbdsc.c||<obj>||<lib>||<lkr>|18fxx50.lkr||
+SuiteArgsString=
+ToolArgsString=-scs -D__4MHz_UBW_BOOTLOADER
+TraceCmdString=
+DebugOptions=
+[File002]
+Location=D:\Projects\UBW\FW\B\output_4MHz\usbdrv.o
+Folder=Intermediary
+DeviceName=PIC18F2553
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mcc18.exe
+PPAD=$(BINDIR)|output_4MHz||$(TMPDIR)|output_4MHz||$(AINDIR)||$(INCDIR)||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.37.01\lib;||$(LKRDIR)||
+SOLK=<src>|main.c|usbmmap.c|usbdrv.c|usb9.c|usbctrltrf.c|boot.c|usbdsc.c||<obj>||<lib>||<lkr>|18fxx50.lkr||
+SuiteArgsString=
+ToolArgsString=-scs -D__4MHz_UBW_BOOTLOADER
+TraceCmdString=
+DebugOptions=
+[File003]
+Location=D:\Projects\UBW\FW\B\output_4MHz\usb9.o
+Folder=Intermediary
+DeviceName=PIC18F2553
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mcc18.exe
+PPAD=$(BINDIR)|output_4MHz||$(TMPDIR)|output_4MHz||$(AINDIR)||$(INCDIR)||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.37.01\lib;||$(LKRDIR)||
+SOLK=<src>|main.c|usbmmap.c|usbdrv.c|usb9.c|usbctrltrf.c|boot.c|usbdsc.c||<obj>||<lib>||<lkr>|18fxx50.lkr||
+SuiteArgsString=
+ToolArgsString=-scs -D__4MHz_UBW_BOOTLOADER
+TraceCmdString=
+DebugOptions=
+[File004]
+Location=D:\Projects\UBW\FW\B\output_4MHz\usbctrltrf.o
+Folder=Intermediary
+DeviceName=PIC18F2553
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mcc18.exe
+PPAD=$(BINDIR)|output_4MHz||$(TMPDIR)|output_4MHz||$(AINDIR)||$(INCDIR)||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.37.01\lib;||$(LKRDIR)||
+SOLK=<src>|main.c|usbmmap.c|usbdrv.c|usb9.c|usbctrltrf.c|boot.c|usbdsc.c||<obj>||<lib>||<lkr>|18fxx50.lkr||
+SuiteArgsString=
+ToolArgsString=-scs -D__4MHz_UBW_BOOTLOADER
+TraceCmdString=
+DebugOptions=
+[File005]
+Location=D:\Projects\UBW\FW\B\output_4MHz\boot.o
+Folder=Intermediary
+DeviceName=PIC18F2553
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mcc18.exe
+PPAD=$(BINDIR)|output_4MHz||$(TMPDIR)|output_4MHz||$(AINDIR)||$(INCDIR)||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.37.01\lib;||$(LKRDIR)||
+SOLK=<src>|main.c|usbmmap.c|usbdrv.c|usb9.c|usbctrltrf.c|boot.c|usbdsc.c||<obj>||<lib>||<lkr>|18fxx50.lkr||
+SuiteArgsString=
+ToolArgsString=-scs -D__4MHz_UBW_BOOTLOADER
+TraceCmdString=
+DebugOptions=
+[File006]
+Location=D:\Projects\UBW\FW\B\output_4MHz\usbdsc.o
+Folder=Intermediary
+DeviceName=PIC18F2553
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={E56A1C86-9D32-4DF6-8C34-FE0388B1B644}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mcc18.exe
+PPAD=$(BINDIR)|output_4MHz||$(TMPDIR)|output_4MHz||$(AINDIR)||$(INCDIR)||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.37.01\lib;||$(LKRDIR)||
+SOLK=<src>|main.c|usbmmap.c|usbdrv.c|usb9.c|usbctrltrf.c|boot.c|usbdsc.c||<obj>||<lib>||<lkr>|18fxx50.lkr||
+SuiteArgsString=
+ToolArgsString=-scs -D__4MHz_UBW_BOOTLOADER
+TraceCmdString=
+DebugOptions=
+[File007]
+Location=D:\Projects\UBW\FW\B\output_4MHz\FW_B_4MHz.cof
+Folder=Output
+DeviceName=PIC18F2553
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={96C98149-AA1B-4CF9-B967-FAE79CAB663C}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mplink.exe
+PPAD=$(BINDIR)|output_4MHz||$(TMPDIR)|output_4MHz||$(AINDIR)||$(INCDIR)||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.37.01\lib;||$(LKRDIR)||
+SOLK=<src>|main.c|usbmmap.c|usbdrv.c|usb9.c|usbctrltrf.c|boot.c|usbdsc.c||<obj>||<lib>||<lkr>|18fxx50.lkr||
+SuiteArgsString=
+ToolArgsString=/m"$(BINDIR_)$(TARGETBASE).map" /w /o"$(BINDIR_)$(TARGETBASE).cof"
+TraceCmdString=
+DebugOptions=
+[File008]
+Location=D:\Projects\UBW\FW\B\output_4MHz\FW_B_4MHz.hex
+Folder=Output
+DeviceName=PIC18F2553
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={96C98149-AA1B-4CF9-B967-FAE79CAB663C}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mplink.exe
+PPAD=$(BINDIR)|output_4MHz||$(TMPDIR)|output_4MHz||$(AINDIR)||$(INCDIR)||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.37.01\lib;||$(LKRDIR)||
+SOLK=<src>|main.c|usbmmap.c|usbdrv.c|usb9.c|usbctrltrf.c|boot.c|usbdsc.c||<obj>||<lib>||<lkr>|18fxx50.lkr||
+SuiteArgsString=
+ToolArgsString=/m"$(BINDIR_)$(TARGETBASE).map" /w /o"$(BINDIR_)$(TARGETBASE).cof"
+TraceCmdString=
+DebugOptions=
+[File009]
+Location=D:\Projects\UBW\FW\B\output_4MHz\FW_B_4MHz.map
+Folder=Output
+DeviceName=PIC18F2553
+LanguageToolSuiteID={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
+LanguageToolID={96C98149-AA1B-4CF9-B967-FAE79CAB663C}
+LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mplink.exe
+PPAD=$(BINDIR)|output_4MHz||$(TMPDIR)|output_4MHz||$(AINDIR)||$(INCDIR)||$(LIBDIR)|C:\Program Files\Microchip\mplabc18\v3.37.01\lib;||$(LKRDIR)||
+SOLK=<src>|main.c|usbmmap.c|usbdrv.c|usb9.c|usbctrltrf.c|boot.c|usbdsc.c||<obj>||<lib>||<lkr>|18fxx50.lkr||
+SuiteArgsString=
+ToolArgsString=/m"$(BINDIR_)$(TARGETBASE).map" /w /o"$(BINDIR_)$(TARGETBASE).cof"
+TraceCmdString=
+DebugOptions=
+[TOOL_LOC_STAMPS]
+tool_loc{96C98149-AA1B-4CF9-B967-FAE79CAB663C}=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mplink.exe
+tool_loc{E56A1C86-9D32-4DF6-8C34-FE0388B1B644}=C:\Program Files\Microchip\mplabc18\v3.37.01\bin\mcc18.exe
